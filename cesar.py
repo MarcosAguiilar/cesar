@@ -22,4 +22,32 @@ def cifrar(frase, distancia):
     return result
 
 
-print(cifrar('hola que tal?', 1))
+
+def crearCifrador(distancia):
+    def cifrador(mensaje):
+        return cifrar(mensaje, distancia)
+    return cifrador
+
+
+
+
+cifrarDidier = crearCifrador(9)
+cifrarMontse = crearCifrador(-9)
+
+
+cifrarDidier("Hola")
+
+
+def crearPareja(distancia):
+    def cifrador(mensaje):
+        return cifrar(mensaje, distancia)
+    
+    def descifrador(mensaje):
+        return cifrar(mensaje, -distancia)
+    
+    return cifrador, descifrador
+
+cifrador, descifrar = crearPareja(11)
+
+print(cifrador("hola"))
+print(descifrar("szwl"))
